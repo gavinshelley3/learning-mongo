@@ -3,8 +3,8 @@
 In this directory you will find a help ticket web application. This
 is split into a front end and a back end.
 
-The front end is in the `front-end` folder and is a Vue CLI application.
-It is identical to the one from Lesson 2 in [Learning Node and Express](https://github.com/BYU-CS-260/learning-node-express). You can run this code with:
+The front end is in the `front-end` folder and is a React CLI application.
+It is identical to the one from Activity N2 in [Learning Node and Express](https://github.com/BYU-CS-260/learning-node-express/blob/master/lesson2/README.md).  You can run this code with:
 
 ```
 cd front-end
