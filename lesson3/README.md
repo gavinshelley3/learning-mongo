@@ -249,11 +249,12 @@ to a local array. Start the server with:
 node tickets.js
 ```
 
-Start the front end with:
+## Front End
 
-```
-npm run serve
-```
+Use the front end from [Activity N1](https://github.com/BYU-CS-260/learning-node-express/blob/master/lesson2/README.md)
+
+It should call the correct API paths, so test to make sure that it works with your new Mongo back end.
+
 
 Open the Network tab in the browser console and create a ticket. You should see the HTTP POST request and response:
 
@@ -269,4 +270,4 @@ If you press the delete button you should see the HTTP DELETE request/response, 
 
 ![DELETE response](/screenshots/delete-response.png)
 
-Take a look at the `src/Home.vue` component in the front end to see why it immediately sends a GET response after the DELETE succeeds.
+If you cant find the front end that you created, you can use [this one](front-end).
