@@ -95,3 +95,5 @@ The [MongoDB manual](https://docs.mongodb.com/manual/) contains some good inform
 * [Data Modeling](https://docs.mongodb.com/manual/core/data-modeling-introduction/)
 
 If you're interested in data modeling (deciding when to divide data among different documents), see this three-part series on [6 Rules of Thumb for MongoDB Schema Design](https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-1?_ga=2.173464736.2038315200.1552159589-1012387045.1552159589).
+
+[Next Tutorial](install.md)
