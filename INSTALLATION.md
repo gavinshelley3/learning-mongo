@@ -15,7 +15,6 @@ To install MongoDB:
 sudo apt update
 sudo apt install mongodb
 sudo systemctl enable mongodb
-sudo apt install mongodb-clients
 ```
 
 Mongo will run on port `27017` by default.
