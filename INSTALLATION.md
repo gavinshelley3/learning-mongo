@@ -119,3 +119,5 @@ By default Mongo is setup to run automatically. To disable/enable this behavior:
 sudo systemctl disable mongodb
 sudo systemctl enable mongodb
 ```
+
+[Next Tutorial](lesson1/README.md)
