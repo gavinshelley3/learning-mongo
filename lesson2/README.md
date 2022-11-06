@@ -62,3 +62,5 @@ meow
 [ { _id: 5e6c055371824b0d73f6ab3f, name: 'Morris', __v: 0 } ]
 ^C
 ```
+
+[Next Tutorial](/lesson3/README.md)
