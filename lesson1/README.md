@@ -72,4 +72,4 @@ Now let's quit:
 quit();
 ```
 
-[Next Tutorial](lesson2/README.md)
+[Next Tutorial](/lesson2/README.md)
