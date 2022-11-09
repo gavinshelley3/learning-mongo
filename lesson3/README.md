@@ -9,7 +9,7 @@ It is identical to the one from Activity N1 in [Learning Node and Express](https
 ```
 cd front-end
 npm install
-npm run serve
+npm start
 ```
 
 The back end is in the `back-end` folder. You can run this code with:
