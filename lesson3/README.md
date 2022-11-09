@@ -149,11 +149,17 @@ catch errors.
 
 The function takes the array of tickets returned from the database and sends them to the front end using `res.send()`. We send back a JavaScript object, which is converted into JSON when sent.
 
-If you look in the front end in `src/Home.vue`, you will see the front end calling this API:
+If you look in the front end in `src/App.js`, you will see the front end calling this API:
 
 ```javascript
-    let response = await axios.get("/api/tickets");
-    this.tickets = response.data.tickets;
+  const fetchTickets = async() => {
+    try {      
+      const response = await axios.get("/api/tickets");
+      setTickets(response.data.tickets);
+    } catch(error) {
+      setError("error retrieving tickets: " + error);
+    }
+  }
 ```
 
 Because the server returns a JSON object, which is converted back into a JavaScript object, the front end can get the tickets using `response.data.tickets`.
@@ -191,13 +197,16 @@ Next, the function calls `ticket.save()`, which saves the ticket into
 the Mongo database. It also sends the ticket to the front end with
 `res.send()`.
 
-Note that our front end doesn't actually use the returned ticket. In `src/Create.vue`, it calls the API with:
+Note that our front end doesn't actually use the returned ticket. In `src/App.js`, it calls the API with:
 
 ```javascript
-await axios.post("/api/tickets", {
-    name: this.name,
-    problem: this.problem
-});
+  const createTicket = async() => {
+    try {
+      await axios.post("/api/tickets", {name: name, problem: problem});
+    } catch(error) {
+      setError("error adding a ticket: " + error);
+    }
+  }
 ```
 
 So the front end ignores any returned data.
