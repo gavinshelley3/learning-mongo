@@ -1,18 +1,24 @@
-const express = require('express');
+const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 
-const mongoose = require('mongoose');
+const mongopass = "DdJcIGmnMvI8GQnN";
+const mongouser = "gavin";
+const { MongoClient } = require("mongodb");
 
-// connect to the database
-mongoose.connect('mongodb://localhost:27017/test', {
+const mongostring = `mongodb+srv://${mongouser}:${mongopass}@cluster0.pr3lclv.mongodb.net/?retryWrites=true&w=majority`;
+
+const mongoose = require("mongoose");
+mongoose.connect(mongostring, {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
 });
 
 const ticketSchema = new mongoose.Schema({
@@ -20,52 +26,44 @@ const ticketSchema = new mongoose.Schema({
   problem: String,
 });
 
-// create a virtual paramter that turns the default _id field into id
-ticketSchema.virtual('id')
-  .get(function() {
-    return this._id.toHexString();
-  });
-
-// Ensure virtual fields are serialised when we turn this into a JSON object
-ticketSchema.set('toJSON', {
-  virtuals: true
+ticketSchema.virtual("id").get(function () {
+  return this._id.toHexString();
 });
 
-// create a model for tickets
-const Ticket = mongoose.model('Ticket', ticketSchema);
+ticketSchema.set("toJSON", {
+  virtuals: true,
+});
 
-app.get('/api/tickets', async (req, res) => {
+const Ticket = mongoose.model("Ticket", ticketSchema);
+
+app.get("/api/tickets", async (req, res) => {
   try {
     let tickets = await Ticket.find();
-    res.send({
-      tickets: tickets
-    });
+    res.send({ tickets: tickets });
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
   }
 });
 
-app.post('/api/tickets', async (req, res) => {
+app.post("/api/tickets", async (req, res) => {
   const ticket = new Ticket({
     name: req.body.name,
-    problem: req.body.problem
+    problem: req.body.problem,
   });
   try {
     await ticket.save();
-    res.send({
-      ticket: ticket
-    });
+    res.send({ ticket: ticket });
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
   }
 });
 
-app.delete('/api/tickets/:id', async (req, res) => {
+app.delete("/api/tickets/:id", async (req, res) => {
   try {
     await Ticket.deleteOne({
-      _id: req.params.id
+      _id: req.params.id,
     });
     res.sendStatus(200);
   } catch (error) {
@@ -74,4 +72,4 @@ app.delete('/api/tickets/:id', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('Server listening on port 3000!'));
+app.listen(3000, () => console.log("Server listening on port 3000!"));

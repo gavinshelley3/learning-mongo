@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+.todo {
+  cursor: pointer;
+}
+.strike {
+  text-decoration: line-through;
+}
